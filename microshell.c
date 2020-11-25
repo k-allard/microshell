@@ -61,8 +61,11 @@ void clear_cmd(t_cmd *cmd)
 	while (cmd)
 	{
 		i = 0;
-		while (cmd->arguments[i++])
-			free(cmd->arguments[i]);
+		while (cmd->args[i])
+		{
+			free(cmd->args[i]);
+			i++;
+		}
 		free(cmd->arguments);
 		tmp = cmd;
 		cmd = cmd->next;
